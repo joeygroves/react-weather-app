@@ -25,3 +25,13 @@ npm install
 ```cmd
 npm start
 ```
+
+# Features
+### Completed
+- Fetch current data from OpenWeatherMap API
+- Background changes depending on if the temperature is cold/hot
+- Live location search (provided you give your permission)
+- Switch between units (Celsius and Farenheit) 
+
+### Planned
+- Autocomplete cities in search box
