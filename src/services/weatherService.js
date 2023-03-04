@@ -73,9 +73,9 @@ const formatForecastWeather = (data) => {
     let { timezone, daily, hourly } = data;
 
     /**
-     * For 'Weekly' (5 Daily) Forecast
+     * For 'Weekly' (7 Day) Forecast
      */
-    daily = daily.slice(1,6).map((d) => {
+    daily = daily.slice(1,8).map((d) => {
         return {
             title: formatToLocalTime(d.dt, timezone, "ccc"),
             temp: d.temp.day,
@@ -84,12 +84,12 @@ const formatForecastWeather = (data) => {
     });
 
     /**
-     * For Hourly Forecast
+     * For Hourly Forecast (Up to 6 hours ahead)
      */
-    hourly = hourly.slice(1,6).map(d => {
+    hourly = hourly.slice(1,7).map(d => {
         return {
             title: formatToLocalTime(d.dt, timezone, "HH:mm ZZZZ"),
-            temp: d.temp.day,
+            temp: d.temp,
             icon: d.weather[0].icon
         }
     });
