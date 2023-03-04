@@ -2,7 +2,7 @@ import { DateTime } from "luxon";
 
 /* API key from OpenWeatherMap */ 
 const API_KEY = 'c4c4fad23b0100b1fd6b76616f52f1d1'
-const BASE_URL = 'https://api.openweathermap.org/data'
+const BASE_URL = 'https://api.openweathermap.org/data/2.5/'
 
 
 /**
@@ -109,7 +109,7 @@ const getFormattedWeatherData = async (searchParams) => {
      * For current weather using the 'weather' URL endpoint
      */
     const formattedCurrentWeather = await getWeatherData(
-        "2.5/weather", 
+        "weather", 
         searchParams
         ).then(formatCurrentWeather);
 
@@ -121,7 +121,7 @@ const getFormattedWeatherData = async (searchParams) => {
      * For forecast weather using the 'onecall' URL endpoint
      */
     const formattedForecastWeather = await getWeatherData(
-        "3.0/onecall", 
+        "onecall", 
         {
             lat,
             lon, 
@@ -129,7 +129,7 @@ const getFormattedWeatherData = async (searchParams) => {
             units: searchParams.units,
         }).then(formatForecastWeather);
 
-    //console.log(lat, lon, searchParams);
+    console.log(lat, lon, searchParams);
 
     return {...formattedCurrentWeather, ...formattedForecastWeather};
 };

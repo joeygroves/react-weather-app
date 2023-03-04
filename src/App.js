@@ -13,7 +13,7 @@ function App() {
   /**
    * Using React useState Hooks to set defaults for location, units and weather
    */
-  const [query, setQuery] = useState({q: 'manila'});
+  const [query, setQuery] = useState({q: 'sydney'});
   const [units, setUnits] = useState('metric');
   const [weather, setWeather] = useState(null);
 
