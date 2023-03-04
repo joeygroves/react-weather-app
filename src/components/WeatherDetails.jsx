@@ -8,6 +8,7 @@ import {
   UilSun,
   UilSunset,
 } from "@iconscout/react-unicons";
+import { iconUrlFromCode } from "../services/weatherService";
 
 function WeatherDetails({
   weather: {
@@ -26,29 +27,35 @@ function WeatherDetails({
 }) {
   return (
     <div>
+        {/** Weather Description (i.e. Snow, Clouds, Rain, etc.) */}
       <div className="flex items-center justify-center py-6 text-xl text-cyan-300">
         <p>{details}</p>
       </div>
 
+        {/** Weather icon for right now */}
       <div className="flex flex-row items-center justify-between text-white py-3">
         <img
-          src="http://openweathermap.org/img/wn/10d@2x.png"
+          src={iconUrlFromCode(icon)}
           alt=""
           className="w-20"
         />
-        <p className="text-5xl"> 17°</p>
 
+        {/** Current temperature */}
+        <p className="text-5xl">{`${temp.toFixed()}°`}</p>
+
+        {/** 'Feels like' temperature */}
         <div className="flex flex-col space-y-2">
           <div className="flex font-light text-sm items-center justify-center">
             <UilTemperature size={18} className="mr-1" />
             Feels Like:
-            <span className="font-medium ml-1">19°</span>
+            <span className="font-medium ml-1">{`${feels_like.toFixed()}°`}</span>
           </div>
 
+            {/** Humidity */}
           <div className="flex font-light text-sm items-center justify-center">
             <UilTear size={18} className="mr-1" />
             Humidity:
-            <span className="font-medium ml-1">73%</span>
+            <span className="font-medium ml-1">{`${humidity}%`}</span>
           </div>
 
           <div className="flex font-light text-sm items-center justify-center">
