@@ -7,12 +7,33 @@ const getWeatherData = (infoType, searchParams) => {
     const url = new URL(BASE_URL + '/' + infoType);
     url.search = new URLSearchParams({...searchParams, appid:API_KEY})
 
-    /* Prints URL */
-    console.log(url);
-    
     return fetch(url)
         .then((res) => res.json())
-        .then((data) => data);
 };
 
-export default getWeatherData;
+const formatCurrentWeather = (data) => {
+    const {
+        coord: {lat, lon},
+        main: {temp, feels_like, temp_min, temp_max, humidity},
+        name,
+        dt,
+        sys: {country, sunrise, sunset},
+        weather,
+        wind: {speed}
+    } = data
+
+    /* Dealing with 'weather' array endpoint from array. 
+    * Renaming 'main' to 'details
+    */
+    const {main: details, icon} = weather[0]
+
+    return {lat, lon, temp, feels_like, temp_min, temp_max, humidity, name, dt, country, sunrise, sunset, details, icon, speed}
+}; 
+
+const getFormattedWeatherData = async (searchParams) => {
+    const formattedCurrentWeather = await getWeatherData('weather', searchParams)
+        .then(data => formatCurrentWeather(data))
+    return formattedCurrentWeather
+};
+
+export default getFormattedWeatherData;
