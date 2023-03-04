@@ -56,6 +56,34 @@ function WeatherDetails() {
                 7:45
             </span>
         </p>
+        <p className='font-light'>|</p>
+
+        <UilSunset />
+        <p className='font-light'>
+            Sunset: 
+            <span className='font-medium ml-1'>
+                17:45
+            </span>
+        </p>
+        <p className='font-light'>|</p>
+
+        <UilArrowUp />
+        <p className='font-light'>
+            High: 
+            <span className='font-medium ml-1'>
+                19°
+            </span>
+        </p>
+        <p className='font-light'>|</p>
+
+        <UilArrowDown />
+        <p className='font-light'>
+            Low: 
+            <span className='font-medium ml-1'>
+                2°
+            </span>
+        </p>
+        <p className='font-light'>|</p>
     </div>
 
     </div>
