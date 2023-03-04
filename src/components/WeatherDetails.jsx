@@ -23,6 +23,8 @@ function WeatherDetails() {
                 className='w-20'
             />
             <p className='text-5xl'> 17°</p>
+
+
             <div className='flex flex-col space-y-2'>
 
                 <div className='flex font-light text-sm items-center justify-center'>
@@ -42,9 +44,20 @@ function WeatherDetails() {
                     Wind:
                     <span className='font-medium ml-1'>8 mph</span>
                 </div>
-
+            
             </div>
         </div>
+
+    <div className='flex flex-row items-center justify-center space-x-2 text-white text-sm py-3'>
+        <UilSun />
+        <p className='font-light'>
+            Sunrise: 
+            <span className='font-medium ml-1'>
+                7:45
+            </span>
+        </p>
+    </div>
+
     </div>
   )
 }
