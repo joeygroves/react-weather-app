@@ -8,7 +8,7 @@ import {
   UilSun,
   UilSunset,
 } from "@iconscout/react-unicons";
-import { iconUrlFromCode } from "../services/weatherService";
+import { iconUrlFromCode, formatToLocalTime } from "../services/weatherService";
 
 function WeatherDetails({
   weather: {
@@ -58,40 +58,45 @@ function WeatherDetails({
             <span className="font-medium ml-1">{`${humidity}%`}</span>
           </div>
 
+            {/** Wind */}
           <div className="flex font-light text-sm items-center justify-center">
             <UilWind size={18} className="mr-1" />
             Wind:
-            <span className="font-medium ml-1">8 mph</span>
+            <span className="font-medium ml-1">{`${speed.toFixed()}mph`}</span>
           </div>
         </div>
       </div>
 
+        {/** Sunrise */}
       <div className="flex flex-row items-center justify-center space-x-2 text-white text-sm py-3">
         <UilSun />
         <p className="font-light">
           Sunrise:
-          <span className="font-medium ml-1">7:45</span>
+          <span className="font-medium ml-1">{formatToLocalTime(sunrise, timezone, "HH:mm")}</span>
         </p>
         <p className="font-light">|</p>
 
+        {/** Sunset */}
         <UilSunset />
         <p className="font-light">
           Sunset:
-          <span className="font-medium ml-1">17:45</span>
+          <span className="font-medium ml-1">{formatToLocalTime(sunset, timezone, "HH:mm")}</span>
         </p>
         <p className="font-light">|</p>
 
+        {/** Max Temp */}
         <UilArrowUp />
         <p className="font-light">
           High:
-          <span className="font-medium ml-1">19°</span>
+          <span className="font-medium ml-1">{`${temp_max.toFixed()}°`}</span>
         </p>
         <p className="font-light">|</p>
 
+        {/** Min Temp */}
         <UilArrowDown />
         <p className="font-light">
           Low:
-          <span className="font-medium ml-1">2°</span>
+          <span className="font-medium ml-1">{`${temp_min.toFixed()}°`}</span>
         </p>
         <p className="font-light">|</p>
       </div>
