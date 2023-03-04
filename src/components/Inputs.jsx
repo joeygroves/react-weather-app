@@ -12,8 +12,8 @@ function Inputs() {
                 className="text-xl font-light p-2 w-full shadow-xl focus:outline-non capitalize placeholder:capitalize"
             />
 
-            <UilSearch size={25} className="text-white cursor-pointer" />
-            <UilMapMarker size={25} className="text-white cursor-pointer" />
+            <UilSearch size={25} className="text-white cursor-pointer transitio ease-out hover:scale-125" />
+            <UilMapMarker size={25} className="text-white cursor-pointer transition ease-out hover:scale-125" />
 
         </div>
     </div>
