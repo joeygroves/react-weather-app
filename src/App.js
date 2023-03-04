@@ -9,6 +9,33 @@ import getFormattedWeatherData from './services/weatherService';
 
 function App() {
 
+  /**
+   * Using React useState Hooks to set defaults for location, units and weather
+   */
+  const [query, setQuery] = useState({q: 'manila'});
+  const [units, setUnits] = useState('metric');
+  const [weather, setWeather] = useState(null);
+
+
+  /**
+   * Using React useEffect Hooks.
+   * Use effect hook grabs data on the first load anyway...
+   * So, we want to fetch new weather data when either of the 2 things happens:
+   * When query changes, when there's a new location
+   * And when unit changes, which farenheit or celsius
+   */
+  useEffect(() => {
+    const fetchWeather = async () => {
+      await getFormattedWeatherData({...query, units})
+        .then((data) => {
+          setWeather(data);
+        });
+
+    };
+
+    fetchWeather();
+  },  [query, units]);
+
   /* Testing weatherService.js */
   const fetchWeather = async () => {
     const data = await getFormattedWeatherData({ q: 'london' });
@@ -22,10 +49,22 @@ function App() {
     h-fit shadow-xl shadow-gray-400">
       <TopButtons />
       <Inputs />
-      <TimeAndLocation />
-      <WeatherDetails />
-      <Forecast title="hourly forecast"/>
-      <Forecast title="weekly forecast"/>
+
+      {/**
+       * This means if weather exists (is not null), then we'll load all the components below
+       */}
+      {weather && (
+        <div>
+          {/**
+          * We want the following 4 components below to load, IF we have the weather
+          */}
+          <TimeAndLocation />
+          <WeatherDetails />
+          <Forecast title="hourly forecast"/>
+          <Forecast title="weekly forecast"/>
+        </div>
+      )}
+
     </div>
   );
 }
