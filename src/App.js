@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './App.css';
-import UilReact from '@iconscout/react-unicons/icons/uil-react'
+//import UilReact from '@iconscout/react-unicons/icons/uil-react'
 import TopButtons from './components/TopButtons';
 import Inputs from './components/Inputs';
 import TimeAndLocation from './components/TimeAndLocation';
@@ -37,9 +37,27 @@ function App() {
     fetchWeather();
   },  [query, units]);
 
+
+  /**
+   * For changing the background colour depending on the temperature
+   */
+  const formatBackground = () => {
+    if (!weather) {
+      return 'from-cyan-700 to-blue-700'
+    };
+
+    const threshold = units === 'metric' ? 20 : 60;
+
+    if (weather.temp <= threshold) {
+      return 'from-cyan-700 to-blue-700'
+    };
+
+    return 'from-yellow-700 to-orange-700'
+  }
+
   return (
-    <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br from-cyan-700 to-blue-700 
-    h-fit shadow-xl shadow-gray-400">
+    <div className={`mx-auto max-w-screen-md mt-4 py-5 px-32 h-fit shadow-xl shadow-gray-400 
+        bg-gradient-to-r ${formatBackground()}`}>
       <TopButtons setQuery={setQuery}/>
       <Inputs setQuery={setQuery} units={units} setUnits={setUnits}/>
 
