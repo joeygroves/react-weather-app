@@ -11,6 +11,10 @@ function Inputs() {
                 placeholder="Search for a place"
                 className="text-xl font-light p-2 w-full shadow-xl focus:outline-non capitalize placeholder:capitalize"
             />
+
+            <UilSearch size={25} className="text-white cursor-pointer" />
+            <UilMapMarker size={25} className="text-white cursor-pointer" />
+
         </div>
     </div>
     );
