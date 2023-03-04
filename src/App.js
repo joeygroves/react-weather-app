@@ -58,6 +58,7 @@ function App() {
   return (
     <div className={`mx-auto max-w-screen-md mt-4 py-5 px-32 h-fit shadow-xl shadow-gray-400 
         bg-gradient-to-r ${formatBackground()}`}>
+
       <TopButtons setQuery={setQuery}/>
       <Inputs setQuery={setQuery} units={units} setUnits={setUnits}/>
 
@@ -76,6 +77,16 @@ function App() {
           <Forecast title="7-day forecast" items={weather.daily}/>
         </div>
       )}
+
+      <div className="flex items-end py-3 pt-14 justify-around">
+        <p className="text-white text-sm font-medium">
+          React Weather App by
+          <a href="https://github.com/joeygroves/react-weather-app"
+          className="flex justify-center text-orange-500 underline underline-offset-2 hover:scale-105 transition ease-out">
+            Joey Groves
+          </a>
+        </p>
+      </div>
 
     </div>
   );
