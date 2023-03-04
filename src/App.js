@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import './App.css';
 import UilReact from '@iconscout/react-unicons/icons/uil-react'
 import TopButtons from './components/TopButtons';
@@ -36,14 +37,6 @@ function App() {
     fetchWeather();
   },  [query, units]);
 
-  /* Testing weatherService.js */
-  const fetchWeather = async () => {
-    const data = await getFormattedWeatherData({ q: 'london' });
-    console.log(data);
-  };
-
-  fetchWeather();
-
   return (
     <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br from-cyan-700 to-blue-700 
     h-fit shadow-xl shadow-gray-400">
@@ -58,8 +51,9 @@ function App() {
           {/**
           * We want the following 4 components below to load, IF we have the weather
           */}
-          <TimeAndLocation />
-          <WeatherDetails />
+          <TimeAndLocation weather={weather}/>
+          <WeatherDetails weather={weather}/>
+
           <Forecast title="hourly forecast"/>
           <Forecast title="weekly forecast"/>
         </div>
