@@ -73,7 +73,7 @@ const formatForecastWeather = (data) => {
     let { timezone, daily, hourly } = data;
 
     /**
-     * For Weekly (5 Daily) Forecast
+     * For 'Weekly' (5 Daily) Forecast
      */
     daily = daily.slice(1,6).map((d) => {
         return {
@@ -143,4 +143,8 @@ const formatToLocalTime = (
     format = "cccc, dd LLL yyyy' | Local time 'HH:mm ZZZZ"
     ) => DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
 
+const iconUrlFromCode = (code) => `http://openweathermap.org/img/wn/${code}@2x.png`;
+
 export default getFormattedWeatherData;
+
+export { formatToLocalTime, iconUrlFromCode };
