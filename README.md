@@ -8,6 +8,9 @@ A React application made using Tailwind CSS, OpenWeatherMap API and Luxon JS.
 
 https://react-weather-app-joeygroves.vercel.app/
 
+![alt text](https://github.com/joeygroves/react-weather-app/blob/main/weather-app-cold.png)
+![alt text](https://github.com/joeygroves/react-weather-app/blob/main/weather-app-hot.png)
+
 ## Getting Started
 
 ### 1. Clone the repository
